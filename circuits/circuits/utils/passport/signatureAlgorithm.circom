@@ -28,6 +28,12 @@ pragma circom 2.1.9;
  28: ecdsa_sha256_brainpoolP224r1_224
  29: ecdsa_sha512_brainpoolP512r1_512
  30: ecdsa_sha224_brainpoolP224r1_224
+ 34: ecdsa_sha1_secp384r1_384
+ 35: rsa_sha1_65537_3072
+ 36: rsa_sha1_3_4096
+ 37: rsa_sha384_65537_4096
+ 38: rsa_sha256_3_4096
+
 */
 
 function getHashLength(signatureAlgorithm) {
@@ -112,6 +118,21 @@ function getHashLength(signatureAlgorithm) {
     if (signatureAlgorithm == 30) { 
         return 224;
     }
+    if (signatureAlgorithm == 34) { 
+        return 160;
+    }
+    if (signatureAlgorithm == 35) { 
+        return 160;
+    }
+    if (signatureAlgorithm == 36) { 
+        return 160;
+    }
+    if (signatureAlgorithm == 37) { 
+        return 384;
+    }
+    if (signatureAlgorithm == 38) { 
+        return 256;
+    }
     return 0;
 }
 
@@ -193,6 +214,21 @@ function getKeyLength(signatureAlgorithm) {
     }
     if (signatureAlgorithm == 30) { 
         return 224;
+    }
+    if (signatureAlgorithm == 34) { 
+        return 384;
+    }
+    if (signatureAlgorithm == 35) { 
+        return 3072;
+    }
+    if (signatureAlgorithm == 36) { 
+        return 4096;
+    }
+    if (signatureAlgorithm == 37) { 
+        return 4096;
+    }
+    if (signatureAlgorithm == 38) { 
+        return 4096;
     }
     return 0;
 }
@@ -277,6 +313,21 @@ function getKLengthFactor(signatureAlgorithm) {
     if (signatureAlgorithm == 30) { 
         return 2;
     }
+    if (signatureAlgorithm == 34) { 
+        return 2;
+    }
+    if (signatureAlgorithm == 35) { 
+        return 1;
+    }
+    if (signatureAlgorithm == 36) { 
+        return 1;
+    }
+    if (signatureAlgorithm == 37) { 
+        return 1;
+    }
+    if (signatureAlgorithm == 38) { 
+        return 1;
+    }
     return 0;
 
 }
@@ -321,6 +372,18 @@ function getExponentBits(signatureAlgorithm) {
     }
     if (signatureAlgorithm == 19) {
         return 17;
+    }
+    if (signatureAlgorithm == 35) { 
+        return 17;
+    }
+    if (signatureAlgorithm == 36) { 
+        return 2;
+    }
+    if (signatureAlgorithm == 37) { 
+        return 17;
+    }
+    if (signatureAlgorithm == 38) { 
+        return 2;
     }
     return 0;
 }
